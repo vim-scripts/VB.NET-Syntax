@@ -68,9 +68,25 @@ syn match vbNumber "\.\d\+\>"
 
 " String and Character contstants
 syn region vbString start=+"+ end=+"+
+
 syn region vbComment start="\<REM\>" end="$" contains=vbTodo
 syn region vbComment start="'" end="$" contains=vbTodo
+
+syn region vbPreCondit start="^#If\s" end="Then$"
+syn region vbPreCondit start="^#ElseIf\s" end="Then$"
+syn match vbPreCondit "^#Else$"
+syn match vbPreCondit "^#End If$"
+
+syn region vbPreCondit start="^#Region\s\+\"" end="\"$"
+syn match vbPreCondit "^#End Region$"
+
+syn region vbPreCondit start="^#ExternalSource(" end=")$"
+syn match vbPreCondit "^#End ExternalSource$"
+
+syn region vbPreCondit start="^#Const\s" end="$"
+
 syn region vbLineNumber	start="^\d" end="\s"
+
 syn match vbTypeSpecifier "[a-zA-Z0-9][\$%&!#]"ms=s+1
 
 " Define the default highlighting.
@@ -94,6 +110,7 @@ if version >= 508 || !exists("did_vb_syntax_inits")
   HiLink vbTodo Todo
   HiLink vbFunction Identifier
   HiLink vbMethods PreProc
+  HiLink vbPreCondit PreCondit
   HiLink vbSpecial Special
   HiLink vbTypeSpecifier Type
   HiLink vbTypes Type
