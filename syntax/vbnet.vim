@@ -12,46 +12,48 @@ syn keyword vbStatement AddHandler AddressOf Alias And
 syn keyword vbStatement AndAlso  Ansi As Assembly
 syn keyword vbStatement Auto ByRef
 syn keyword vbStatement ByVal Call Case Catch
-syn keyword vbStatement Class Const
+syn keyword vbStatement Class Const Continue Custom
 syn keyword vbStatement Declare Default
 syn keyword vbStatement Delegate Dim DirectCast Do
 syn keyword vbStatement Each Else ElseIf
 syn keyword vbStatement End Enum Erase Error
 syn keyword vbStatement Event Exit False Finally
 syn keyword vbStatement For Friend Function Get
-syn keyword vbStatement GetType GoSub GoTo Handles
+syn keyword vbStatement GoSub GoTo Handles
 syn keyword vbStatement If Implements Imports In
-syn keyword vbStatement Inherits Interface Is
+syn keyword vbStatement Inherits Interface Is IsNot
 syn keyword vbStatement Let Lib Like
 syn keyword vbStatement Loop Me Mod Module
 syn keyword vbStatement MustInherit MustOverride MyBase MyClass
 syn keyword vbStatement Namespace New Next Not
 syn keyword vbStatement Nothing NotInheritable NotOverridable
-syn keyword vbStatement On Option Optional Or
+syn keyword vbStatement Of On Option Optional Or
 syn keyword vbStatement OrElse Overloads Overridable Overrides
 syn keyword vbStatement ParamArray Preserve Private Property
 syn keyword vbStatement Protected Public RaiseEvent ReadOnly
-syn keyword vbStatement ReDim REM RemoveHandler Resume
+syn keyword vbStatement ReDim RemoveHandler Resume
 syn keyword vbStatement Return Select Set Shadows
 syn keyword vbStatement Shared Static
 syn keyword vbStatement Step Stop Structure
 syn keyword vbStatement Sub SyncLock Then Throw
 syn keyword vbStatement To True Try TypeOf
-syn keyword vbStatement Unicode Until Variant When
+syn keyword vbStatement Unicode Until Using Variant When
 syn keyword vbStatement While With WithEvents WriteOnly
 syn keyword vbStatement Xor
 
 syn keyword vbTypes Boolean Byte Char Date Decimal Double
 syn keyword vbTypes Integer Long Object Short Single String
+syn keyword vbTypes UInteger ULong UShort SByte
 
 syn match vbOperator "[()+.,\-/*=&]"
 syn match vbOperator "[<>]=\="
 syn match vbOperator "<>"
 syn match vbOperator "\s\+_$"
-syn keyword vbOperator And AndAlso Or OrElse Not Xor Mod In Is Imp Eqv Like
-syn keyword vbOperator To ByVal ByRef AddressOf GetType
+syn keyword vbOperator ByVal ByRef AddressOf GetType
 syn keyword vbFunction CBool CByte CChar CDate CDbl CDec CInt
-syn keyword vbFunction Clng CObj CShort CSng CStr CType
+syn keyword vbFunction Clng CObj CSByte CShort CSng CStr
+syn keyword vbFunction CUInt CULng CUShort
+syn keyword vbFunction CType DirectCast GetType
 
 syn keyword vbConst True False Nothing
 
@@ -119,4 +121,22 @@ if version >= 508 || !exists("did_vb_syntax_inits")
   delcommand HiLink
 endif
 
+let b:match_words = '\<Namespace\>:\<End Namespace\>'
+      \ . ',\<Module\>:\<End Module\>'
+      \ . ',\<Class\>:\<End Class\>'
+      \ . ',\<Property\>:\<End Property\>'
+      \ . ',\<Enum\>:\<End Enum\>'
+      \ . ',\<Function\>:\<End Function\>'
+      \ . ',\<Sub\>:\<End Sub\>'
+      \ . ',\<Get\>:\<End Get\>'
+      \ . ',\<Set\>:\<End Set\>'
+      \ . ',\<Do\>:\<Loop\>'
+      \ . ',\<For\>:\<Next\>'
+      \ . ',\<While\>:\<End While\>'
+      \ . ',\<Select\>:\<End Select\>'
+      \ . ',\<Using\>:\<End Using\>'
+      \ . ',\<With\>:\<End With\>'
+      \ . ',\<SyncLock\>:\<End SyncLock\>'
+      \ . ',\<Try\>:\<End Try\>'
+      \ . ',\<If\>:\<End If\>'
 let b:current_syntax = "vbnet"
